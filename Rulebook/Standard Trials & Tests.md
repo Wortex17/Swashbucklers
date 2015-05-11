@@ -3,9 +3,9 @@
 ## About Trials
 A trial describes a character's action or interaction with variable outcome.
 Examples are attacking, picking a lock, trying to run, persuading other characters and casting magical spells can be described as trials.
-All Trials can be broken down to a set of standard tests and some ìoperationsî, not unlike mathematical operations, that combine them.
+All Trials can be broken down to a set of standard tests and some ‚Äúoperations‚Äù, not unlike mathematical operations, that combine them.
 The result of a trial can either be numeric, with a value, or boolean, with a state of success or failure.
-Trials are notated as terms similar to expressions in mathematics or informatics - but donít worry, it will not be that hard!
+Trials are notated as terms similar to expressions in mathematics or informatics - but don‚Äôt worry, it will not be that hard!
 
 ## Trial Notation
 An example for a trial expression is the following:
@@ -28,7 +28,7 @@ The current only other result type is boolean, which is notated as a question ma
 ```
 - The `:` is the beginning of the trial expression.
 
-The game avoids to use very complex expressions, so donít worry too much about that.
+The game avoids to use very complex expressions, so don‚Äôt worry too much about that.
 But we still have to look inside the special operations.
 They will a lot of sense once you dive into the game.
 
@@ -37,10 +37,10 @@ They will a lot of sense once you dive into the game.
 ## Operations
 
 ### `+`
-Addition. Same as mathematics! Isnít this nice?
+Addition. Same as mathematics! Isn‚Äôt this nice?
 
 ### `-`
-Subtraction. Same as mathematics! Isnít this also nice?
+Subtraction. Same as mathematics! Isn‚Äôt this also nice?
 This also includes the priority before +.
 Beware that negative numbers are possible, and that these are not the same as a subtraction operation - mind the space before and after the operation sign.
 
@@ -49,7 +49,7 @@ A multiplication. Yes, you guessed it: Same as mathematics!
 This also includes the priority before + and -.
 
 ### `/`
-A division. No weíre not shitting you - Same as mathematics.
+A division. No we‚Äôre not shitting you - Same as mathematics.
 This also includes the priority before +, -, .
 But divisions can quite easily become quite complex, so you will not find a lot of these and most of the time it will be very easy stuff like division by two (taking the half of the value before it).
 As a rule of thumbs, resulting fractional numbers are rounded down, if not stated otherwise.
@@ -72,39 +72,39 @@ Two (or more) numerical values will be placed in these brackets, separated by co
 ### `>`
 > Greater than
 
-Now weíre getting into boolean logic - cool huh?
-Before and after this sign two numerical values will be placed. If the first one is higher/greater than the second, this term results as ìSuccessî. Otherwise as ìFailureî.
+Now we‚Äôre getting into boolean logic - cool huh?
+Before and after this sign two numerical values will be placed. If the first one is higher/greater than the second, this term results as ‚ÄúSuccess‚Äù. Otherwise as ‚ÄúFailure‚Äù.
 
 ### `>=`
 > Greater than or equal
 
-Same as before, but if both values are equal this term results as ìSuccessî.
+Same as before, but if both values are equal this term results as ‚ÄúSuccess‚Äù.
 
 ### `<`
 > Smaller than
 
-Now weíre getting into boolean logic - cool huh?
-Before and after this sign two numerical values will be placed. If the first one is lower/smaller than the second, this term results as ìSuccessî. Otherwise as ìFailureî.
+Now we‚Äôre getting into boolean logic - cool huh?
+Before and after this sign two numerical values will be placed. If the first one is lower/smaller than the second, this term results as ‚ÄúSuccess‚Äù. Otherwise as ‚ÄúFailure‚Äù.
 
 ### `<=`
 > Smaller than or equal
 
-Same as before, but if both values are equal this term results as ìSuccessî.
+Same as before, but if both values are equal this term results as ‚ÄúSuccess‚Äù.
 
 ### `==`
 > Equal
 
-Before and after this sign two values will be placed. If they are equal, this term results as ìSuccessî. Otherwise as ìFailureî.
+Before and after this sign two values will be placed. If they are equal, this term results as ‚ÄúSuccess‚Äù. Otherwise as ‚ÄúFailure‚Äù.
 
 ### `!=`
 > Unequal
 
-Before and after this sign two values will be placed. If they are not equal, this term results as ìSuccessî. Otherwise as ìFailureî.
+Before and after this sign two values will be placed. If they are not equal, this term results as ‚ÄúSuccess‚Äù. Otherwise as ‚ÄúFailure‚Äù.
 
 ### `!()`
 > Inverse
 
-A boolean value will be placed inside these brackets. If it is a success this term results as ìFailureî. Otherwise as ìSuccessî.
+A boolean value will be placed inside these brackets. If it is a success this term results as ‚ÄúFailure‚Äù. Otherwise as ‚ÄúSuccess‚Äù.
 
 ---
 
@@ -126,7 +126,7 @@ If any of these is a success, the whole thing is a success.
     :? Any(chance(DEX), chance(STR))
 ```
 
-The trial will be successful if either test is successful. Actually, try the first one, if it is a success, you donít even need to try the other ones.
+The trial will be successful if either test is successful. Actually, try the first one, if it is a success, you don‚Äôt even need to try the other ones.
 When tests have to be passed, you may choose the order in which you want to try them.
 (You can either make the test on DEX first or the one on STR).
 
@@ -141,3 +141,35 @@ In other words, it means **"Choose any of that tests and pass it"**.
 ```
 
 You can either try the test on DEX or the one on STR.
+
+## Standard Tests
+All trials boil down to a combination of tests. These tests are unlikely to be custom, if not part of a game extension, and therefore are one of these *Standard Tests*
+
+### Power Test
+Power tests are mainly used to determine the effect, ramifications or impact of something. For example the resulting power of an attempted strike.
+
+#### Notation
+```
+    :power(VAL)
+```
+where `VAL` is the Attribute (or another numeric value) in question.
+
+#### Execution
+You cast one D6. The number shown determines the result by using the following table.
+Under certain circumstances, adjectives can be returned.
+
+| Roll          | Numeric Result                 | Adjective            |
+| ------------- |--------------------------------| ---------------------|
+| 6             | Double the `VAL`               | :sparkles:Sublime    |
+| 5             | `VAL`                          | *None*               |
+| 4             | `VAL`                          | *None*               |
+| 3             | Half the `VAL` (rounded down)  | *None*               |
+| 2             | 1                              | *None*               |
+| 1             | 0                              | :shit:Botched        |
+
+#### Results
+The power test results in a numeric value and possibly an adjective (:sparkles:Sublime or :shit:Botched).
+If not noted otherwise, the adjectives will not have any further effect on the result.
+
+#### Story Implications
+You may explain what exactly happened to explain the result, especially when an adjective is returned. For example, explain a :sparkles:Sublime Attack with a very powerful and blood rushed swing of the character. On the other hand, :shit:Botched suggests that the Character failed miserably or comically, sometimes even going as far as hurting himself in the process, e.g. he misjudged the strength of his swing and slipped, hitting his knee with the sword.
