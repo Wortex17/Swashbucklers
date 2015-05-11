@@ -111,23 +111,33 @@ A boolean value will be placed inside these brackets. If it is a success this te
 ### `All( , )`
 Two (or more) boolean values will be placed in these brackets, separated by commas.
 If all are a success, the whole thing is a success.
-Example:
+
+```
     :? chance(DEX) && chance(STR)
+```
+
 The trial will be successful if both tests are successful.
-Any( , )
+
+### `Any( , )`
 Two (or more) boolean values will be placed in these brackets, separated by commas.
 If any of these is a success, the whole thing is a success.
-Example:
+
+```
     :? Any(chance(DEX), chance(STR))
+```
+
 The trial will be successful if either test is successful. Actually, try the first one, if it is a success, you don’t even need to try the other ones.
 When tests have to be passed, you may choose the order in which you want to try them.
 (You can either make the test on DEX first or the one on STR).
-One( , )
-Ok this one seems similar to “Any” but is a bit more tricky.
+
+### `One( , )`
+Ok this one seems similar to *Any* but is a bit more tricky.
 Two (or more) boolean values will be placed in these brackets, separated by commas.
 You have to choose one of them beforehand, and try to pass it. This operator will return the result of that test.
-In other words, it means “Choose any of that tests and pass it”.
+In other words, it means **"Choose any of that tests and pass it"**.
 
-Example:
+```
     :? One( chance(DEX), chance(STR) )
+```
+
 You can either try the test on DEX or the one on STR.
