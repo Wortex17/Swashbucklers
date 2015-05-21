@@ -1,0 +1,13 @@
+{
+  "name": "Swashbucklers-Bookpress",
+  "version": "0.0.1",
+  "repository": "https://github.com/Wortex17/Swashbucklers",
+  "devDependencies": {
+    "fs-extra": "^0.18.3",
+    "gulp": "^3.8.11",
+    "gulp-batch": "^1.0.5",
+    "gulp-markdown-it": "^0.1.1",
+    "gulp-mustache": "^1.0.2",
+    "gulp-util": "^3.0.4"
+  }
+}
