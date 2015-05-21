@@ -12,6 +12,18 @@ module.exports = {
         //The file extension of mustache/markdown partial files
         partialExt: "md",
 
+        //The base definition files, extended from right to left, so the leftmost has top priority
+        definitions: {
+            //This is the fallback definition, always loaded no matter the sez language
+            "*": ["definitions/basic_en"],
+
+            //Each further definition list can be keyed with a language (or any other identifier)
+            //The definitions will be inserted before the fallback definition list
+            "english": [],
+            "german": ["definitions/basic_en"]
+        },
+
+
         //The blob for main files that you want to compile.
         mainFile: "partials/Markdown.md",
 
