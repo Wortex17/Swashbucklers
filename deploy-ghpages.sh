@@ -34,7 +34,7 @@ if [[ $changesN > 0 ]] ;then
 
 
     # commit changed files with the commit message "Deploy to GitHub Pages".
-    git commit -m "Deploy to GitHub Pages"
+    git commit -m "Travis-CI Build: $TRAVIS_JOB_ID"
 
     # Force push from the current repo's master branch to the remote
     # repo's gh-pages branch. (All previous history on the gh-pages branch
