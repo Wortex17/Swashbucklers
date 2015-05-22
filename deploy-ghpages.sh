@@ -21,6 +21,8 @@ cd _deploy
 git config user.name "Travis CI"
 git config user.email "travis@nucular-bacon.com"
 
+# stage all changes
+git add .
 
 #count the changes that have been made
 changesN=$(git diff --cached | wc -l);
@@ -30,8 +32,6 @@ echo "${changesN} changes found"
 if [[ $changesN > 0 ]] ;then
 
 
-    # stage all changes
-    git add .
 
     # commit changed files with the commit message "Deploy to GitHub Pages".
     git commit -m "Deploy to GitHub Pages"
