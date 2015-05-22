@@ -26,9 +26,9 @@ git add .
 #count the changes that have been made
 changesN=$(git diff --numstat | wc -l);
 
-echo "$(changesN) changes staged"
+echo "${changesN} changes staged"
 
-if [[ $(changesN) > 0 ]] ;then
+if [[ $changesN > 0 ]] ;then
     # commit changed files with the commit message "Deploy to GitHub Pages".
     git commit -m "Deploy to GitHub Pages"
 
