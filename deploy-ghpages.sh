@@ -23,7 +23,7 @@ git config user.email "travis@nucular-bacon.com"
 
 
 #count the changes that have been made
-changesN=$(git diff --shortstat | wc -l);
+changesN=$(git diff --cached | wc -l);
 
 echo "${changesN} changes found"
 
