@@ -6,7 +6,7 @@ rm -rf _deploy || exit 0;
 mkdir _deploy;
 
 # move required files to the _deploy diretcory
-mv Letterpress/_html/* _deploy/book
+mv Letterpress/_html/* _deploy/book/
 
 # go to the _deploy directory and create a *new* Git repo
 cd _deploy
