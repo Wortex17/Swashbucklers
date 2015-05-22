@@ -21,9 +21,7 @@ git config user.name "Travis CI"
 git config user.email "travis@nucular-bacon.com"
 
 #count the changes that have been made
-nChanges = $(git diff --numstat | wc -l)
-
-if [[ $nChanges > 0 ]] ;then
+if [[ $(git diff --numstat | wc -l) > 0 ]] ;then
 
     # The first and only commit to this new Git repo contains all the
     # files present with the commit message "Deploy to GitHub Pages".
