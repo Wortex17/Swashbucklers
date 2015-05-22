@@ -7,7 +7,7 @@ mkdir _deploy
 
 # go to the _deploy directory and pull the Git repo with gh-pages
 cd _deploy
-git clone --branch gh-pages --depth 1
+git clone ${GH_REF} --branch gh-pages --depth 1
 
 # replace the book with the freshly built one
 rm -rf _deploy/book || exit 0;
