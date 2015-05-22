@@ -6,3 +6,7 @@ install:
   - npm install
   - gulp generate:all
   - cd ..
+
+# Disable email notifications
+notifications:
+  email: false
