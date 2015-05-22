@@ -29,6 +29,8 @@ changesN=$(git diff --cached | wc -l);
 
 echo "${changesN} changes found"
 
+echo "$(git diff) other changes found"
+
 if [[ $changesN > 0 ]] ;then
 
 
