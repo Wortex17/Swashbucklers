@@ -29,11 +29,9 @@ changesN=$(git diff --cached | wc -l);
 
 echo "${changesN} changes found"
 
-echo "$(git diff) other changes found"
-
 if [[ $changesN > 0 ]] ;then
 
-
+    echo "Commiting to gh-pages"
 
     # commit changed files with the commit message "Deploy to GitHub Pages".
     git commit -m "Travis-CI Build: $TRAVIS_JOB_ID"
