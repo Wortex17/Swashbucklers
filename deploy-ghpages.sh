@@ -11,6 +11,7 @@ git clone "https://${GH_REF}" --branch gh-pages --depth 1 _deploy/
 # replace the book with the freshly built one
 rm -rf _deploy/book || exit 0;
 mkdir _deploy/book
+echo "Copy contents of Letterpress/_html/ to _deploy/book/"
 mv Letterpress/_html/* _deploy/book/
 
 # We will do some stuff with the repo now, so step in
@@ -20,15 +21,18 @@ cd _deploy
 git config user.name "Travis CI"
 git config user.email "travis@nucular-bacon.com"
 
-# stage all changes and let git work on the real diff
-git add .
 
 #count the changes that have been made
-changesN=$(git diff --numstat | wc -l);
+changesN=$(git diff --shortstat | wc -l);
 
-echo "${changesN} changes staged"
+echo "${changesN} changes found"
 
 if [[ $changesN > 0 ]] ;then
+
+
+    # stage all changes
+    git add .
+
     # commit changed files with the commit message "Deploy to GitHub Pages".
     git commit -m "Deploy to GitHub Pages"
 
