@@ -20,12 +20,16 @@ cd _deploy
 git config user.name "Travis CI"
 git config user.email "travis@nucular-bacon.com"
 
-#count the changes that have been made
-if [[ $(git diff --numstat | wc -l) > 0 ]] ;then
+# stage all changes and let git work on the real diff
+git add .
 
-    # The first and only commit to this new Git repo contains all the
-    # files present with the commit message "Deploy to GitHub Pages".
-    git add .
+#count the changes that have been made
+changesN=$(git diff --numstat | wc -l);
+
+echo "$(changesN) changes staged"
+
+if [[ $(changesN) > 0 ]] ;then
+    # commit changed files with the commit message "Deploy to GitHub Pages".
     git commit -m "Deploy to GitHub Pages"
 
     # Force push from the current repo's master branch to the remote
