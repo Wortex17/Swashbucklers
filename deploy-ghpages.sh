@@ -4,6 +4,7 @@ set -e # exit with nonzero exit code if anything fails
 # clear and re-create the _deploy directory
 rm -rf _deploy || exit 0;
 mkdir _deploy;
+mkdir _deploy/book/
 
 # move required files to the _deploy diretcory
 mv Letterpress/_html/* _deploy/book/
