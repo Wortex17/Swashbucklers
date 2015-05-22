@@ -1,9 +1,11 @@
 language: node_js
 node_js:
-- 'iojs'
+  - 'iojs'
 install:
-- cd ./Letterpress
-- npm install
+  - cd ./Letterpress
+  - npm install
+  - cd ..
 script:
   - cd ./Letterpress
   - gulp generate:all
+  - cd ..
