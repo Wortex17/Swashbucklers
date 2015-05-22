@@ -15,12 +15,12 @@ module.exports = {
         //The base definition files, extended from right to left, so the leftmost has top priority
         definitions: {
             //This is the fallback definition, always loaded no matter the sez language
-            "*": ["definitions/basic_en"],
+            "*": ["./definitions/basic_en"],
 
             //Each further definition list can be keyed with a language (or any other identifier)
             //The definitions will be inserted before the fallback definition list
             "english": [],
-            "german": ["definitions/basic_en"]
+            "german": ["./definitions/basic_de"]
         },
 
 

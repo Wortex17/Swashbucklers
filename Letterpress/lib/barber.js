@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     mustache = require('gulp-mustache'),
 
     fs = require('fs-extra'),
-    path = require('path')
+    path = require('path'),
+    util = require('util')
     ;
 
 /**
@@ -11,9 +12,7 @@ var gulp = require('gulp'),
  */
 
 var mustacheEnv = {
-    view: {
-        msg: "Hello Gulp!"
-    },
+    view: {},
     partials: {}
 };
 
@@ -85,6 +84,49 @@ exports.Tasks = {
         ;
     },
 
+    loadDefinitions: function(done)
+    {
+        var language = 'english';
+        gutil.log(gutil.colors.bold('Loading definitions for language:'+language));
+
+        mustacheEnv.view = {};
+
+        var definitions = exports.config.definitions;
+
+        var usedDefinitions = definitions['*'];
+
+        //Extend used definitions with those for the currently set language
+        if(!definitions.hasOwnProperty(language))
+        {
+            done(new Error("definitions contain no list for language:" + language));
+            return;
+        }
+        usedDefinitions = usedDefinitions.concat(definitions[language]);
+
+        //Now load all definitions
+        var combinedDefinitions = {};
+        gutil.log("Combining definitions...");
+        usedDefinitions.forEach(function(deffile){
+
+            var defpath = deffile;
+            if(!path.isAbsolute(deffile))
+            {
+                defpath = path.join(__dirname, '..', defpath);
+            }
+
+            gutil.log("   "+gutil.colors.grey(deffile));
+
+            var defdata = require(defpath);
+            combinedDefinitions = util._extend(combinedDefinitions, defdata);
+        });
+        mustacheEnv.view = combinedDefinitions;
+        gutil.log("Final definitions database with "+Object.keys(combinedDefinitions).length+" top-level entries");
+
+        done();
+
+
+    },
+
     generateMD: function(done)
     {
         gutil.log(gutil.colors.bold('Generating pure markdown from mustached markdown'));
@@ -102,11 +144,22 @@ exports.Tasks = {
                     {
                         done(err);
                     } else {
-                        generate(done);
+                        loadDefs(done);
                     }
                 });
             }
         });
+
+        function loadDefs(done){
+            exports.Tasks.loadDefinitions(function(err){
+                if(err)
+                {
+                    done(err)
+                } else {
+                    generate(done);
+                }
+            });
+        }
 
         function generate(done){
             var fileCount = 0;
