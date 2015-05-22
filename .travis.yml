@@ -2,9 +2,8 @@ language: node_js
 node_js:
   - 'iojs'
 install:
-  - cd ./Letterpress
-  - npm install
-  - cd ..
+  - ./.travis/install-dependencies.sh
+  - ./.travis/letterpress.sh
 script:
   - cd ./Letterpress
   - gulp generate:all
