@@ -1,3 +1,8 @@
+# Ignore every generated file except gitignores and gitkeeps
+public/book_contents/*.html
+!public/book_contents/.gitignore
+!public/book_contents/.gitkeep
+
 # Node.js modules
 node_modules
 
