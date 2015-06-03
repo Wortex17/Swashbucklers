@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 'iojs'
 install:
-  - cd ./Letterpress
+  - cd ./bookbinder-tools
   - npm install
   - gulp generate:all
   - cd ..
