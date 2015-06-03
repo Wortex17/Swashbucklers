@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    markdownIt = require('gulp-markdown-it'),
-
+    markdownIt = require('gulp-markdown-it')
     fs = require('fs-extra'),
     path = require('path')
     ;

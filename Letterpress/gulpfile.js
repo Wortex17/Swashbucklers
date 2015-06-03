@@ -4,14 +4,15 @@ var gulp = require('gulp'),
     ;
 
 var barber = require('./lib/barber'),
-    markdowner = require('./lib/markdowner')
+    markdowner = require('./lib/markdowner'),
+    demoserver = require('./lib/demoserver')
     ;
 
 var letterpress = require('./letterpress.js');
 
 barber.config = letterpress.barber;
 markdowner.config = letterpress.markdowner;
-
+demoserver.config = letterpress.demoserver;
 
 var tasks = {
     cleanGenerated: function(done)
@@ -44,6 +45,15 @@ gulp.task('load:markdown-partials', barber.Tasks.loadAllPartials);
 gulp.task('generate:markdown', barber.Tasks.generateMD);
 gulp.task('generate:html', markdowner.Tasks.generateHTML);
 gulp.task('generate:all', tasks.generateAll);
+gulp.task('serve', function(done){
+    demoserver.Tasks.startServer(function(err){
+        if(err)
+            done(err);
+        else {
+            demoserver.Tasks.livereload(done);
+        }
+    });
+});
 
 
 

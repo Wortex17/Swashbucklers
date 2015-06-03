@@ -48,5 +48,14 @@ module.exports = {
             linkify: true,
             typographer: true
         }
+    },
+
+    demoserver: {
+        //The directory from which the server serves static files
+        staticRootDirectory: "_html/",
+        //The port on which the server will run
+        port: 50002,
+        //The port on which the live-reload will communicate
+        lrPort: 35729
     }
 };
