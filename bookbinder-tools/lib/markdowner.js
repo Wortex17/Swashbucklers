@@ -74,6 +74,10 @@ exports.Tasks = {
                                 {
                                     return "/Swashbucklers" + link;
                                 }
+                                //Shortcut to assets
+                                else if(link.indexOf("$/") == 0) {
+                                    return "/Swashbucklers/book_assets/" + link.slice(2);
+                                }
                             }
                         }
                     }),

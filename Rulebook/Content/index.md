@@ -7,7 +7,7 @@
 </head>
 <body class="markdown-body">
 
-![Image Alt](/book_assets/img/flags/ad.png)
+![Image Alt]($/img/flags/ad.png)
 
 {{> pure}}
 </body>
