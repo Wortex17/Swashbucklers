@@ -6,7 +6,8 @@
     <link href="/book_assets/css/main.css" rel="stylesheet">
 </head>
 <body>
-<img src="/book_assets/img/flags/ad.png">
+<img src="/book_assets/img/flags/ad.png" />
+
 {{> pure}}
 </body>
 </html>

@@ -30,7 +30,7 @@ module.exports = {
         //The output directory of generated markdown files
         outputDirectory: "_md/",
 
-        insertDebugMarkers: true
+        insertDebugMarkers: false
     },
 
     //The markdowner is where markdown gets compiled to html
