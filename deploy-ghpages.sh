@@ -10,7 +10,7 @@ git clone "https://${GH_REF}" --branch gh-pages --depth 1 _deploy/
 
 # replace the book with the freshly built one
 echo "Copy contents of public/ to _deploy/"
-mv public/* _deploy/
+cp -r public/* _deploy/
 
 # Determine the current branch
 echo "Currently in branch: $TRAVIS_BRANCH"
