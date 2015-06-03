@@ -25,7 +25,7 @@ module.exports = {
 
 
         //The blob for main files that you want to compile.
-        mainFile: "partials/Markdown.md",
+        mainFile: "partials/index.md",
 
         //The output directory of generated markdown files
         outputDirectory: "_md/",
