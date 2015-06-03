@@ -34,7 +34,7 @@ exports.Tasks = {
         }));
 
         var staticPath = getStaticPath();
-        server.use(express.static(staticPath));
+        server.use('/Swashbucklers', express.static(staticPath));
         gutil.log('Serving static files from', gutil.colors.grey(staticPath));
 
         server.listen(exports.config.port, function(err){
@@ -42,7 +42,7 @@ exports.Tasks = {
                 done(err)
             }
             else {
-                gutil.log('Server listening on', gutil.colors.grey('http://localhost:'+exports.config.port));
+                gutil.log('Server listening on', gutil.colors.grey('http://localhost:'+exports.config.port+'/Swashbucklers/'));
                 done();
             }
         });
