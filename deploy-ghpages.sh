@@ -14,40 +14,55 @@ mkdir _deploy/book
 echo "Copy contents of Letterpress/_html/ to _deploy/book/"
 mv Letterpress/_html/* _deploy/book/
 
-# We will do some stuff with the repo now, so step in
-cd _deploy
+# Determine the current branch
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+branch_name="(unnamed branch)"     # detached HEAD
+branch_name=${branch_name##refs/heads/}
+echo "Currently in branch: $branch_name"
 
-# inside this git repo we'll pretend to be a new user
-git config user.name "Travis CI"
-git config user.email "travis@nucular-bacon.com"
 
-# stage all changes
-git add .
+if [[ "$branch_name" -eq "init/migration" ]] ;then
 
-#count the changes that have been made
-changesN=$(git diff --cached | wc -l);
+    echo "Branch marked for deployment, beginning.."
 
-echo "${changesN} changes found"
+    # We will do some stuff with the repo now, so step in
+    cd _deploy
 
-if [[ $changesN > 0 ]] ;then
+    # inside this git repo we'll pretend to be a new user
+    git config user.name "Travis CI"
+    git config user.email "travis@nucular-bacon.com"
 
-    echo "Commiting to gh-pages"
+    # stage all changes
+    git add .
 
-    # commit changed files with the commit message "Deploy to GitHub Pages".
-    git commit -m "Travis-CI Build: $TRAVIS_JOB_ID"
+    #count the changes that have been made
+    changesN=$(git diff --cached | wc -l);
 
-    echo "Pushing to gh-pages"
+    echo "${changesN} changes found"
 
-    # Force push from the current repo's master branch to the remote
-    # repo's gh-pages branch. (All previous history on the gh-pages branch
-    # will be lost, since we are overwriting it.) We redirect any output to
-    # /dev/null to hide any sensitive credential data that might otherwise be exposed.
-    git push --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages > /dev/null 2>&1
+    if [[ $changesN > 0 ]] ;then
+
+        echo "Commiting to gh-pages"
+
+        # commit changed files with the commit message "Deploy to GitHub Pages".
+        git commit -m "Travis-CI Build: $TRAVIS_JOB_ID"
+
+        echo "Pushing to gh-pages"
+
+        # Force push from the current repo's master branch to the remote
+        # repo's gh-pages branch. (All previous history on the gh-pages branch
+        # will be lost, since we are overwriting it.) We redirect any output to
+        # /dev/null to hide any sensitive credential data that might otherwise be exposed.
+        git push --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages > /dev/null 2>&1
+
+    else
+
+        echo "No changes to commit"
+
+    fi
+
+    echo "Deployment of book complete"
 
 else
-
-    echo "No changes to commit"
-
+    echo "Branch not marked for deployment"
 fi
-
-echo "Deployment of book complete"
