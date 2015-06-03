@@ -3,10 +3,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link href="/book_assets/css/main.css" rel="stylesheet">
+    <link href="/Swashbucklers/book_assets/css/main.css" rel="stylesheet">
 </head>
 <body class="markdown-body">
-<img src="/book_assets/img/flags/ad.png" />
+
+![Image Alt](/book_assets/img/flags/ad.png)
 
 {{> pure}}
 </body>

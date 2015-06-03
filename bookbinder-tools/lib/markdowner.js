@@ -1,8 +1,9 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    markdownIt = require('gulp-markdown-it')
+    markdownIt = require('gulp-markdown-it'),
     fs = require('fs-extra'),
-    path = require('path')
+    path = require('path'),
+    util = require('util')
     ;
 
 /**
@@ -64,8 +65,19 @@ exports.Tasks = {
             );
             gulp.src(getHTMLInputBlob())
                 .pipe(markdownIt({
-                    options: exports.config['markdown-it'],
-                    plugins: []
+                    options: util._extend(exports.config['markdown-it'], {
+                        replaceLink: function (link, env) {
+                            if(link.length > 0)
+                            {
+                                //Link relative to base path, append real base
+                                if(link[0] == "/" && link.indexOf("/Swashbucklers") != 0)
+                                {
+                                    return "/Swashbucklers" + link;
+                                }
+                            }
+                        }
+                    }),
+                    plugins: ['markdown-it-replace-link']
                 }))
                 .on('data', function (vinyl) {
                     fileCount++;
