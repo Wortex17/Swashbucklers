@@ -11,8 +11,8 @@ git clone "https://${GH_REF}" --branch gh-pages --depth 1 _deploy/
 # replace the book with the freshly built one
 rm -rf _deploy/book || exit 0;
 mkdir _deploy/book
-echo "Copy contents of Letterpress/_html/ to _deploy/book/"
-mv Letterpress/_html/* _deploy/book/
+echo "Copy contents of bookbinder-tools/_html/ to _deploy/book/"
+mv bookbinder-tools/_html/* _deploy/book/
 
 # Determine the current branch
 echo "Currently in branch: $TRAVIS_BRANCH"

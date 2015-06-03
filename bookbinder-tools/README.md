@@ -1,6 +1,6 @@
-# Swashbucklers' Letterpress
+# Swashbucklers' Bookbinder Tools
 
-*Letterpress* is a small tool, built for Swashbuckler to:
+*Bookbinder Tools* is a small toolkit, built for Swashbuckler to:
 
 - composite Mustache & Markdown to pure Markdown, using a database of variables and possibly a language-kit
 - compile Markdown to HTML using an custom extended dialect

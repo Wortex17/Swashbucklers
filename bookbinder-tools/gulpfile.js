@@ -8,11 +8,11 @@ var barber = require('./lib/barber'),
     demoserver = require('./lib/demoserver')
     ;
 
-var letterpress = require('./letterpress.js');
+var bookconfig = require('./book.config.js');
 
-barber.config = letterpress.barber;
-markdowner.config = letterpress.markdowner;
-demoserver.config = letterpress.demoserver;
+barber.config = bookconfig.barber;
+markdowner.config = bookconfig.markdowner;
+demoserver.config = bookconfig.demoserver;
 
 var tasks = {
     cleanGenerated: function(done)
@@ -59,7 +59,7 @@ gulp.task('serve', function(done){
 
 gulp.task('auto:generate:all', ['generate:all'], function(done) {
 
-    gutil.log(gutil.colors.bold('Watching ' + gutil.colors.grey(letterpress.markdowner.inputDirectory) + ' for changes...'));
+    gutil.log(gutil.colors.bold('Watching ' + gutil.colors.grey(bookconfig.markdowner.inputDirectory) + ' for changes...'));
 
     ///Batch the events so that multiple short-time changes only trigger once
     gulp.watch(barber.getPartialsBlob(), batch({
