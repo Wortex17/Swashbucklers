@@ -27,7 +27,7 @@ var tasks = {
         });
     },
 
-    generateAll: function(done)
+    generateAllButStyle: function(done)
     {
         barber.Tasks.generateMD(function(err) {
             if(err)
@@ -35,6 +35,24 @@ var tasks = {
                 done(err);
             } else {
                 markdowner.Tasks.generateHTML(done);
+            }
+        });
+    },
+    generateAll: function(done)
+    {
+        barber.Tasks.generateMD(function(err) {
+            if(err)
+            {
+                done(err);
+            } else {
+                markdowner.Tasks.generateHTML(function(err) {
+                    if(err)
+                    {
+                        done(err);
+                    } else {
+                        styler.Tasks.generateCSS(done);
+                    }
+                });
             }
         });
     },
@@ -73,7 +91,7 @@ var tasks = {
                 gutil.log('\t', actionDescr, actionTarget);
 
             }).on('end', function(){
-                tasks.generateAll(cb);
+                tasks.generateAllButStyle(cb);
             });
         }));
     },
