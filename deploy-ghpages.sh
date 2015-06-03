@@ -15,11 +15,9 @@ echo "Copy contents of Letterpress/_html/ to _deploy/book/"
 mv Letterpress/_html/* _deploy/book/
 
 # Determine the current branch
-branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"     # detached HEAD
-branch_name=${branch_name##refs/heads/}
-echo "Currently in branch: $branch_name"
+echo "Currently in branch: $TRAVIS_BRANCH"
 
-if [[ "$branch_name" -eq "init/migration" ]] ;then
+if [[ "$TRAVIS_BRANCH" == "init/migration" ]] ;then
 
     echo "Branch marked for deployment, beginning.."
 
