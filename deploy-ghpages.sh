@@ -9,9 +9,7 @@ mkdir _deploy
 git clone "https://${GH_REF}" --branch gh-pages --depth 1 _deploy/
 
 # replace the book with the freshly built one
-rm -rf _deploy || exit 0;
-mkdir _deploy
-echo "Copy contents of bookbinder-tools/_html/ to _deploy/book/"
+echo "Copy contents of public/ to _deploy/"
 mv public/* _deploy/
 
 # Determine the current branch
