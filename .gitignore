@@ -1,5 +1,6 @@
 # Ignore every generated file except gitignores and gitkeeps
-public/book_contents/*.html
+public/book_contents/**/*.html
+public/book_assets/css/**/*.css
 !public/book_contents/.gitignore
 !public/book_contents/.gitkeep
 
