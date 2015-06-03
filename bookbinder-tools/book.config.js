@@ -52,6 +52,14 @@ module.exports = {
         }
     },
 
+    //The styler is where sass gets compiled to css
+    styler: {
+        //The input directory of where to read sass files from
+        inputDirectory: "../Rulebook/Style/",
+        //The output directory of generated css files
+        outputDirectory: "../public/book_assets/css/"
+    },
+
     demoserver: {
         //The directory from which the server serves static files
         staticRootDirectory: "../public/",
