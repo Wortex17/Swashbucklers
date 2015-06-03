@@ -51,10 +51,10 @@ exports.Tasks = {
     livereload: function(done)
     {
         var staticPath = getStaticPath();
+        var glob = staticPath + '/**/*';
+        gutil.log('livereload watching', gutil.colors.grey(glob));
 
-        gutil.log('livereload watching', gutil.colors.grey(staticPath + '/*'));
-
-        gulp.watch(staticPath + '/*', batch({
+        gulp.watch(staticPath + '/**/*', batch({
             timeout: 300
         }, function (events, cb) {
 

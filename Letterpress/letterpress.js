@@ -38,7 +38,7 @@ module.exports = {
         //The input directory of where to read markdown files from
         inputDirectory: "_md/",
         //The output directory of generated html files
-        outputDirectory: "../public/book/",
+        outputDirectory: "../public/book_contents/",
         //if the output should be cleaned before generation, ensuring no artifacts from a previous build are left
         cleanOnGeneration: false,
         //if the input should be cleaned after generation, ensuring no intermediate artifacts are left
@@ -54,7 +54,7 @@ module.exports = {
 
     demoserver: {
         //The directory from which the server serves static files
-        staticRootDirectory: "../public/book/",
+        staticRootDirectory: "../public/",
         //The port on which the server will run
         port: 50002,
         //The port on which the live-reload will communicate
