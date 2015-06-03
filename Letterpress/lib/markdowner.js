@@ -26,6 +26,15 @@ exports.Tasks = {
         }
         done(err);
     },
+    cleanInput: function (done) {
+        var err;
+        try {
+            fs.removeSync(exports.config.inputDirectory);
+        } catch (e) {
+            err = e;
+        }
+        done(err);
+    },
 
     generateHTML: function(done)
     {
@@ -66,7 +75,19 @@ exports.Tasks = {
                     gutil.log(
                         gutil.colors.blue('compiled ' + gutil.colors.white(fileCount) + ' files to '),
                         gutil.colors.grey(exports.config.outputDirectory));
-                    done(err);
+
+                    if(exports.config.cleanInputOnGeneration) {
+                        exports.Tasks.cleanInput(function (err) {
+                            if (err) {
+                                done(err);
+                            }
+                            else {
+                                done();
+                            }
+                        });
+                    } else {
+                        done(err);
+                    }
                 })
             ;
         }

@@ -1,0 +1,6 @@
+# Ignore every generated file
+book/*.html
+
+# Keep this and gitkeeps
+!book/.gitignore
+!book/.gitkeep
