@@ -1,3 +1,1 @@
-
-
-{{> Standard Trials & Tests}}
+{{> Trials & Tests}}

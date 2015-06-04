@@ -1,39 +1,3 @@
-# Standard Trials and Tests
-
-## About Trials
-A trial describes a character's action or interaction with variable outcome.
-Examples are attacking, picking a lock, trying to run, persuading other characters and casting magical spells can be described as trials.
-All Trials can be broken down to a set of standard tests and some “operations”, not unlike mathematical operations, that combine them.
-The result of a trial can either be numeric, with a value, or boolean, with a state of success or failure.
-Trials are notated as terms similar to expressions in mathematics or informatics - but don’t worry, it will not be that hard!
-
-## Trial Notation
-An example for a trial expression is the following:
-
-```
-    :# power(STR) + distance + 4
-```
-
-- The `4` is a *constant* number in that formula, a numerical value that never changes.
-- The `+` is an **operation**, summing together the values on its sides. It obeys the same rules as in math!
-- The `distance` here is a *variable*. This variable is always explained in the context of the trial
-(inside the text somewhere around the depiction of the expression).
-- The power() part, is a test that may yield different results, every time a character tries to pass this trial,
-as it depends on the throw of dices and attributes of the characters. More about tests later.
-- The `#` tells us that the trial results in a numerical value, that will be used in some context (e.g. as damage).
-- A trial expression always begins with the result type of the trial.
-The current only other result type is boolean, which is notated as a question mark:
-```
-    :? chance(DEX)
-```
-- The `:` is the beginning of the trial expression.
-
-The game avoids to use very complex expressions, so don’t worry too much about that.
-But we still have to look inside the special operations.
-They will a lot of sense once you dive into the game.
-
-
-
 ## Operations
 
 ### `+`
@@ -141,35 +105,3 @@ In other words, it means **"Choose any of that tests and pass it"**.
 ```
 
 You can either try the test on DEX or the one on STR.
-
-## Standard Tests
-All trials boil down to a combination of tests. These tests are unlikely to be custom, if not part of a game extension, and therefore are one of these *Standard Tests*
-
-### Power Test
-Power tests are mainly used to determine the effect, ramifications or impact of something. For example the resulting power of an attempted strike.
-
-#### Notation
-```
-    :power(VAL)
-```
-where `VAL` is the Attribute (or another numeric value) in question.
-
-#### Execution
-You cast one D6. The number shown determines the result by using the following table.
-Under certain circumstances, adjectives can be returned.
-
-| Roll          | Numeric Result                 | Adjective            |
-| ------------- |--------------------------------| ---------------------|
-| 6             | Double the `VAL`               | :sparkles:Sublime    |
-| 5             | `VAL`                          | *None*               |
-| 4             | `VAL`                          | *None*               |
-| 3             | Half the `VAL` (rounded down)  | *None*               |
-| 2             | 1                              | *None*               |
-| 1             | 0                              | :shit:Botched        |
-
-#### Results
-The power test results in a numeric value and possibly an adjective (:sparkles:Sublime or :shit:Botched).
-If not noted otherwise, the adjectives will not have any further effect on the result.
-
-#### Story Implications
-You may explain what exactly happened to explain the result, especially when an adjective is returned. For example, explain a :sparkles:Sublime Attack with a very powerful and blood rushed swing of the character. On the other hand, :shit:Botched suggests that the Character failed miserably or comically, sometimes even going as far as hurting himself in the process, e.g. he misjudged the strength of his swing and slipped, hitting his knee with the sword.
