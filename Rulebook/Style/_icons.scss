@@ -1,0 +1,17 @@
+.rulebook {
+  .icon {
+
+    &[class^="flaticon-"]::before, &[class*=" flaticon-"]::before, &[class^="flaticon-"]::after, &[class*=" flaticon-"]::after {
+      font-style: normal;
+      margin: 0;
+      font-size: 1.3em;
+    }
+    
+    &[title='shit'], &[title='poo'], &[title='botched'] {
+      color: #693a17;
+    }
+    &[title='sublime'] {
+      color: #E9DC51;
+    }
+  }
+}
