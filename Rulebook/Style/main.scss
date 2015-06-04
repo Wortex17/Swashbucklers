@@ -2,8 +2,10 @@
 
 .rulebook {
 
+
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   font-size: 12pt;
+  font-weight: normal;
   line-height: 1.2;
 
   background: #FFF;
@@ -14,4 +16,105 @@
   hyphens: auto;
 
   word-wrap: break-word;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  padding: 30pt;
+
+  * {
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+    word-wrap: break-word;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 0.25em 0 0.25em 0;
+  }
+  h3, h4, h5, h6 {
+    margin: 0.15em 0 0.15em 0;
+  }
+
+  h1 {
+    font-size: 28pt;
+    padding-bottom: 0.15em;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+  }
+
+  h2 {
+    font-size: 24pt;
+    padding-bottom: 0.1em;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+
+  h3 {
+    font-size: 20pt;
+  }
+
+  h4 {
+    font-size: 18pt;
+  }
+
+  h5 {
+    font-size: 14pt;
+  }
+
+  h6 {
+    font-size: 12pt;
+  }
+
+  p {
+    margin: 1em 0 1em 0;
+  }
+
+  code, kbd, pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  pre {
+    overflow: auto;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0 15px;
+    color: #777;
+    border-left: 4px solid #ddd;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: keep-all;
+
+    th, td {
+      padding: 6px 13px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+
+      &:nth-child(2n) {
+        background-color: #f8f8f8;
+      }
+    }
+  }
+
 }
