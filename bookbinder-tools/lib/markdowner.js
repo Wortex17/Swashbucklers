@@ -58,6 +58,8 @@ exports.Tasks = {
 
         function generate(done) {
 
+            var icons = require(path.join(__dirname, '..', exports.config.icons));
+
             var fileCount = 0;
             gutil.log(
                 gutil.colors.blue('compiling markdown in'),
@@ -81,7 +83,20 @@ exports.Tasks = {
                             }
                         }
                     }),
-                    plugins: ['markdown-it-replace-link']
+                    plugins: [
+                        'markdown-it-replace-link',
+                        ['markdown-it-emoji', {defs:icons}]
+                    ],
+                    configure: function(md)
+                    {
+                        var originalEmojiRenderer = md.renderer.rules.emoji;
+                        md.renderer.rules.emoji = function(token, idx) {
+
+                            return '<span title="'+token[idx].markup+'" class="icon '+token[idx].content+'"></span>';
+
+                        };
+
+                    }
                 }))
                 .on('data', function (vinyl) {
                     fileCount++;

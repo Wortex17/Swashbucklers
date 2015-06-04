@@ -49,7 +49,9 @@ module.exports = {
             html: true,
             linkify: true,
             typographer: true
-        }
+        },
+
+        'icons': "../Rulebook/Definitions/icons"
     },
 
     //The styler is where sass gets compiled to css
