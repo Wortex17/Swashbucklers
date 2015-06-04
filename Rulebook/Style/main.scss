@@ -1,1 +1,17 @@
-@import 'lib/github-markdown-css';
+//@import 'lib/github-markdown-css';
+
+.rulebook {
+
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 12pt;
+  line-height: 1.2;
+
+  background: #FFF;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  word-wrap: break-word;
+}
