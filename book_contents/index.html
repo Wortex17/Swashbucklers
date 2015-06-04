@@ -8,183 +8,177 @@
 </head>
 <body class="markdown-body rulebook">
 <p><img src="/Swashbucklers/book_assets/img/flags/ad.png" alt="Image Alt"></p>
-<h1>Sample Markdown App</h1>
-<p>For now this will be a playground</p>
-<p><a href="http://github.com">github.com</a></p>
-<p>english (english)</p>
-<p>On July 2, an alien mothership entered Earth’s orbit and deployed several dozen saucer-shaped “destroyer” spacecraft, each 15 miles (24 km) wide.</p>
-<p>On July 3, the Black Knights, a squadron of Marine Corps F/A-18 Hornets, participated in an assault on a destroyer near the city of Los Angeles.</p>
-<h2>The second largest heading</h2>
-<h6>The 6th largest heading</h6>
-<p>In the words of Abraham Lincoln:</p>
-<blockquote>
-<p>Pardon my french</p>
-</blockquote>
-<p><em>This text will be italic</em>
-<strong>This text will be bold</strong></p>
-<p><strong>Everyone <em>must</em> attend the meeting at 5 o’clock today.</strong></p>
-<ul>
-<li>Item</li>
-<li>Item</li>
-<li>Item</li>
-</ul>
-<ul>
-<li>Item</li>
-<li>Item</li>
-<li>Item</li>
-</ul>
-<ol>
-<li>
-<p>Item 1</p>
-</li>
-<li>
-<p>Item 2</p>
-</li>
-<li>
-<p>Item 3</p>
-</li>
-<li>
-<p>Item 1</p>
-</li>
-<li>
-<p>A corollary to the above item.</p>
-</li>
-<li>
-<p>Yet another point to consider.</p>
-</li>
-<li>
-<p>Item 2</p>
-</li>
-</ol>
-<ul>
-<li>A corollary that does not need to be ordered.
-<ul>
-<li>This is indented four spaces, because it’s two spaces further than the item above.</li>
-<li>You might want to consider making a new list.</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>Item 3</li>
-</ol>
-<p>Here’s an idea: why don’t we take <code>SuperiorProject</code> and turn it into <code>**Reasonable**Project</code>.</p>
-<p>Check out this neat program I wrote:</p>
-<pre><code>x = 0
-x = 2 + 2
-what is x
+<h1>Standard Trials and Tests</h1>
+<h2>About Trials</h2>
+<p>A trial describes a character’s action or interaction with variable outcome.
+Examples are attacking, picking a lock, trying to run, persuading other characters and casting magical spells can be described as trials.
+All Trials can be broken down to a set of standard tests and some “operations”, not unlike mathematical operations, that combine them.
+The result of a trial can either be numeric, with a value, or boolean, with a state of success or failure.
+Trials are notated as terms similar to expressions in mathematics or informatics - but don’t worry, it will not be that hard!</p>
+<h2>Trial Notation</h2>
+<p>An example for a trial expression is the following:</p>
+<pre><code>    :# power(STR) + distance + 4
 </code></pre>
-<p><a href="undefined">Visit GitHub!</a></p>
+<ul>
+<li>The <code>4</code> is a <em>constant</em> number in that formula, a numerical value that never changes.</li>
+<li>The <code>+</code> is an <strong>operation</strong>, summing together the values on its sides. It obeys the same rules as in math!</li>
+<li>The <code>distance</code> here is a <em>variable</em>. This variable is always explained in the context of the trial
+(inside the text somewhere around the depiction of the expression).</li>
+<li>The power() part, is a test that may yield different results, every time a character tries to pass this trial,
+as it depends on the throw of dices and attributes of the characters. More about tests later.</li>
+<li>The <code>#</code> tells us that the trial results in a numerical value, that will be used in some context (e.g. as damage).</li>
+<li>A trial expression always begins with the result type of the trial.
+The current only other result type is boolean, which is notated as a question mark:</li>
+</ul>
+<pre><code>    :? chance(DEX)
+</code></pre>
+<ul>
+<li>The <code>:</code> is the beginning of the trial expression.</li>
+</ul>
+<p>The game avoids to use very complex expressions, so don’t worry too much about that.
+But we still have to look inside the special operations.
+They will a lot of sense once you dive into the game.</p>
+<h2>Operations</h2>
+<h3><code>+</code></h3>
+<p>Addition. Same as mathematics! Isn’t this nice?</p>
+<h3><code>-</code></h3>
+<p>Subtraction. Same as mathematics! Isn’t this also nice?
+This also includes the priority before +.
+Beware that negative numbers are possible, and that these are not the same as a subtraction operation - mind the space before and after the operation sign.</p>
+<h3><code>*</code></h3>
+<p>A multiplication. Yes, you guessed it: Same as mathematics!
+This also includes the priority before + and -.</p>
+<h3><code>/</code></h3>
+<p>A division. No we’re not shitting you - Same as mathematics.
+This also includes the priority before +, -, .
+But divisions can quite easily become quite complex, so you will not find a lot of these and most of the time it will be very easy stuff like division by two (taking the half of the value before it).
+As a rule of thumbs, resulting fractional numbers are rounded down, if not stated otherwise.</p>
+<h3><code>( )</code></h3>
+<p>Brackets. These give priority to the term enclosed within. Same as in mathematics.
+Heads up! - tests also use brackets to describe some relationships. These are not the same - again mind the spaces before and after normal brackets (there are none on the ones that the tests are using).</p>
+<h3><code>|( )|</code></h3>
+<p>A numerical value will be placed inside that piped brackets. If it is negative, make it non-negative.</p>
+<h3><code>Max( , )</code></h3>
+<p>Two (or more) numerical values will be placed in these brackets, separated by commas. Only the higher value counts.</p>
+<h3><code>Min( , )</code></h3>
+<p>Two (or more) numerical values will be placed in these brackets, separated by commas. Only the higher value counts.</p>
 <hr>
-<h1>Hello ?</h1>
-<p><a href="http://example.com">http://example.com</a></p>
-<p><s>Mistaken text.</s></p>
-<p>Fenced Code:</p>
-<pre><code>function test() {
-  console.log(&quot;notice the blank line before this function?&quot;);
-}
+<h3><code>&gt;</code></h3>
+<blockquote>
+<p>Greater than</p>
+</blockquote>
+<p>Now we’re getting into boolean logic - cool huh?
+Before and after this sign two numerical values will be placed. If the first one is higher/greater than the second, this term results as “Success”. Otherwise as “Failure”.</p>
+<h3><code>&gt;=</code></h3>
+<blockquote>
+<p>Greater than or equal</p>
+</blockquote>
+<p>Same as before, but if both values are equal this term results as “Success”.</p>
+<h3><code>&lt;</code></h3>
+<blockquote>
+<p>Smaller than</p>
+</blockquote>
+<p>Now we’re getting into boolean logic - cool huh?
+Before and after this sign two numerical values will be placed. If the first one is lower/smaller than the second, this term results as “Success”. Otherwise as “Failure”.</p>
+<h3><code>&lt;=</code></h3>
+<blockquote>
+<p>Smaller than or equal</p>
+</blockquote>
+<p>Same as before, but if both values are equal this term results as “Success”.</p>
+<h3><code>==</code></h3>
+<blockquote>
+<p>Equal</p>
+</blockquote>
+<p>Before and after this sign two values will be placed. If they are equal, this term results as “Success”. Otherwise as “Failure”.</p>
+<h3><code>!=</code></h3>
+<blockquote>
+<p>Unequal</p>
+</blockquote>
+<p>Before and after this sign two values will be placed. If they are not equal, this term results as “Success”. Otherwise as “Failure”.</p>
+<h3><code>!()</code></h3>
+<blockquote>
+<p>Inverse</p>
+</blockquote>
+<p>A boolean value will be placed inside these brackets. If it is a success this term results as “Failure”. Otherwise as “Success”.</p>
+<hr>
+<h3><code>All( , )</code></h3>
+<p>Two (or more) boolean values will be placed in these brackets, separated by commas.
+If all are a success, the whole thing is a success.</p>
+<pre><code>    :? chance(DEX) &amp;&amp; chance(STR)
 </code></pre>
-<p>Syntax Highlighting:</p>
-<pre><code class="language-ruby">require 'redcarpet'
-markdown = Redcarpet.new(&quot;Hello World!&quot;)
-puts markdown.to_html
+<p>The trial will be successful if both tests are successful.</p>
+<h3><code>Any( , )</code></h3>
+<p>Two (or more) boolean values will be placed in these brackets, separated by commas.
+If any of these is a success, the whole thing is a success.</p>
+<pre><code>    :? Any(chance(DEX), chance(STR))
 </code></pre>
+<p>The trial will be successful if either test is successful. Actually, try the first one, if it is a success, you don’t even need to try the other ones.
+When tests have to be passed, you may choose the order in which you want to try them.
+(You can either make the test on DEX first or the one on STR).</p>
+<h3><code>One( , )</code></h3>
+<p>Ok this one seems similar to <em>Any</em> but is a bit more tricky.
+Two (or more) boolean values will be placed in these brackets, separated by commas.
+You have to choose one of them beforehand, and try to pass it. This operator will return the result of that test.
+In other words, it means <strong>“Choose any of that tests and pass it”</strong>.</p>
+<pre><code>    :? One( chance(DEX), chance(STR) )
+</code></pre>
+<p>You can either try the test on DEX or the one on STR.</p>
+<h2>Standard Tests</h2>
+<p>All trials boil down to a combination of tests. These tests are unlikely to be custom, if not part of a game extension, and therefore are one of these <em>Standard Tests</em></p>
+<h3>Power Test</h3>
+<p>Power tests are mainly used to determine the effect, ramifications or impact of something. For example the resulting power of an attempted strike.</p>
+<h4>Notation</h4>
+<pre><code>    :power(VAL)
+</code></pre>
+<p>where <code>VAL</code> is the Attribute (or another numeric value) in question.</p>
+<h4>Execution</h4>
+<p>You cast one D6. The number shown determines the result by using the following table.
+Under certain circumstances, adjectives can be returned.</p>
 <table>
 <thead>
 <tr>
-<th>First Header</th>
-<th>Second Header</th>
+<th>Roll</th>
+<th>Numeric Result</th>
+<th>Adjective</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
+<td>6</td>
+<td>Double the <code>VAL</code></td>
+<td>:sparkles:Sublime</td>
 </tr>
 <tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
+<td>5</td>
+<td><code>VAL</code></td>
+<td><em>None</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>VAL</code></td>
+<td><em>None</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Half the <code>VAL</code> (rounded down)</td>
+<td><em>None</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td><em>None</em></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>:shit:Botched</td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Help</td>
-<td>Display the help window.</td>
-</tr>
-<tr>
-<td>Close</td>
-<td>Closes a window</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Help</td>
-<td><s>Display the</s> help window.</td>
-</tr>
-<tr>
-<td>Close</td>
-<td><em>Closes</em> a window</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Left-Aligned</th>
-<th style="text-align:center">Center Aligned</th>
-<th style="text-align:right">Right Aligned</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">col 3 is</td>
-<td style="text-align:center">some wordy text</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td style="text-align:left">col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td style="text-align:left">zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
+<h4>Results</h4>
+<p>The power test results in a numeric value and possibly an adjective (:sparkles:Sublime or :shit:Botched).
+If not noted otherwise, the adjectives will not have any further effect on the result.</p>
+<h4>Story Implications</h4>
+<p>You may explain what exactly happened to explain the result, especially when an adjective is returned. For example, explain a :sparkles:Sublime Attack with a very powerful and blood rushed swing of the character. On the other hand, :shit:Botched suggests that the Character failed miserably or comically, sometimes even going as far as hurting himself in the process, e.g. he misjudged the strength of his swing and slipped, hitting his knee with the sword.</p>
 </body>
 </html>

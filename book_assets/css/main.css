@@ -1,10 +1,71 @@
 .rulebook {
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   font-size: 12pt;
+  font-weight: normal;
   line-height: 1.2;
   background: #FFF;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 30pt; }
+  .rulebook * {
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .rulebook h1, .rulebook h2, .rulebook h3, .rulebook h4, .rulebook h5, .rulebook h6 {
+    font-weight: bold;
+    margin: 0.25em 0 0.25em 0; }
+  .rulebook h3, .rulebook h4, .rulebook h5, .rulebook h6 {
+    margin: 0.15em 0 0.15em 0; }
+  .rulebook h1 {
+    font-size: 28pt;
+    padding-bottom: 0.15em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
+  .rulebook h2 {
+    font-size: 24pt;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+  .rulebook h3 {
+    font-size: 20pt; }
+  .rulebook h4 {
+    font-size: 18pt; }
+  .rulebook h5 {
+    font-size: 14pt; }
+  .rulebook h6 {
+    font-size: 12pt; }
+  .rulebook p {
+    margin: 1em 0 1em 0; }
+  .rulebook code, .rulebook kbd, .rulebook pre {
+    font-family: monospace, monospace;
+    font-size: 1em; }
+  .rulebook pre {
+    overflow: auto; }
+  .rulebook blockquote {
+    margin: 0;
+    padding: 0 15px;
+    color: #777;
+    border-left: 4px solid #ddd; }
+  .rulebook table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: keep-all; }
+    .rulebook table th, .rulebook table td {
+      padding: 6px 13px;
+      border: 1px solid #ddd; }
+    .rulebook table th {
+      font-weight: bold; }
+    .rulebook table tr {
+      background-color: #fff;
+      border-top: 1px solid #ccc; }
+      .rulebook table tr:nth-child(2n) {
+        background-color: #f8f8f8; }
